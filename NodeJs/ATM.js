@@ -1,4 +1,4 @@
-const input = require('prompt-sync')();
+const prompt = require('prompt-sync')();
 displayMainMenu();
 function displayMainMenu (){
   let welcomeMessage =
@@ -6,28 +6,27 @@ function displayMainMenu (){
           "WELCOME TO SULTY BANK\n" +
       "INSERT YOUR CARD AND PRESS ENTER\n"+
     "===================================\n"
-    input(welcomeMessage);
+    prompt(welcomeMessage);
   censorPIN()
 }
-function censorPIN(secretNumber){
-    secretNumber =("KINDLY ENTER YOUR SECRET NUMBER:\t")
-    // return secretNumber.replace(/./g, '*');
+function censorPIN(){
+   let secretNumber =("KINDLY ENTER YOUR SECRET NUMBER:\t")
+    return secretNumber.replace(/./g, '*');
 }
 function proceedMessage() {
-  let message =
-        "==========\n"+
+    let message =
+        "==========\n" +
         "WELCOME\n" +
-        "==========\n"+
+        "==========\n" +
         "PRESS CASH TRANSACTION BUTTON TO PROCEED TO TRANSACTION MENU\n" +
         "->1 CASH TRANSACTIONS\n" +
         "->2 SELECT INSTANT\n" +
         "->3 UPDATE MOBILE NUMBER\n" +
         "PRESS CANCEL TO TERMINATE\n";
-    input(message)
-
+    prompt(message)
 }
 function cashTransaction() {
-let message = 
+let message =
     "SELECT TRANSACTIONS\n" +
     "PRESS CANCEL TO TERMINATE\n" +
     "->1 BALANCE\n" +
@@ -35,10 +34,10 @@ let message =
     "->3 WITHDRAWAL\n" +
     "->4 TRANSFER\n" +
     "->5 PAY ARENA";
-    return input(message)
+    return prompt(message)
 }
 
-switch (input(cashTransaction).charAt(0)){
+switch (prompt(cashTransaction).charAt(0)){
     case '1' :
         checkBalance();
     break;
@@ -66,7 +65,7 @@ function amount (){
         "2-> #500 " +  " 6-> #20000\n"+
         "3-> #1000 "+  "7-> OTHERS (LESS #20000)\n"+
         "4-> #5000";
-    input(amount);
+    prompt(amount);
 }
 function display(message){
     console.log(message)
@@ -80,22 +79,22 @@ function withdrawal() {
 }
 function changePin(){
     let pin = "PIN SUCCESSFULLY CHANGED";
-    input(pin);
+    prompt(pin);
 }
 function accountType(){
     const message =
         "1-> CURrENT ACCOUNT\n" +
         "2-> SAVING ACCOUNT\n" +
         "3-> FIXED ACCOUNT\n";
-    input(message)
+    prompt(message)
 }
 function doneMessage () {
     const message =
         "DO YOU WANT TO PERFORM ANOTHER TRANSACTION?\n\n" +
         "1-> YES\n" +
         "2-> NO";
-    input(message);
-    if (input(message).charAt(0)==='1'){
+    prompt(message);
+    if (prompt(message).charAt(0)==='1'){
         proceedMessage();
     }else {
         display("TAKE YOUR CARD")
@@ -107,7 +106,7 @@ function receiptMessage (){
         "DO YOU WANT TO PERFORM ANOTHER TRANSACTION?\n\n" +
         "1-> YES\n" +
         "2-> NO\n";
-    input(message);
+    prompt(message);
 }
 function checkBalance(){
     accountType();
@@ -120,9 +119,9 @@ function transfer(){
         "1-> TO FIRST MONIE WALLET\n" +
         "2-> TO LINKED ACCOUNT\n" +
         "3-> TO OTHER BANK ACCOUNT";
-    input(message);
+    prompt(message);
     accountType();
-    input("KINDLY ENTER THE DESTINATION ACCOUNT NUMBER\n");
+    prompt("KINDLY ENTER THE DESTINATION ACCOUNT NUMBER\n");
     amount();
     doneMessage();
 }
