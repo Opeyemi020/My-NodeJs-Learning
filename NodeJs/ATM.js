@@ -1,4 +1,5 @@
 const prompt = require('prompt-sync')();
+
 displayMainMenu();
 function displayMainMenu (){
   let welcomeMessage =
